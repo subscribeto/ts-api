@@ -5,10 +5,10 @@
  */
 
 const gulp = require("gulp");
-const typescript = require("gulp-typescript");
+const typescript = require("gulp-typescript/release/main");
 const sourcemaps = require("gulp-sourcemaps");
-const uglify = require("gulp-uglify-es").default;
-const del = require("del");
+const uglify = require("gulp-uglify-es/lib/index").default;
+const del = require("del/index");
 
 const paths = {
 	
@@ -120,7 +120,9 @@ function compileTypeScript(done) {
 function uglifyJavaScript(done) {
 
 	return gulp.src(paths.javascript.allFiles)
+		.pipe(sourcemaps.init({ loadMaps: true }))
 		.pipe(uglify())
+		.pipe(sourcemaps.write("."))
 		.pipe(gulp.dest(paths.javascript.dir));
 
 }
