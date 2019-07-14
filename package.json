@@ -1,6 +1,6 @@
 {
 	"name": "@subscribeto/ts-api",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": "A collection of utility classes for accessing the sub.scribe.to API.",
 	"publishConfig": {
 		"access": "public"
