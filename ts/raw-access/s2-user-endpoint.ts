@@ -26,7 +26,7 @@ export class S2UserEndpoint extends S2Endpoint {
 	 */
 	public static getEndpointURL(append: string = ""): string {
 		
-		return super.getEndpointURL("/user")
+		return super.getEndpointURL("/user") + append;
 		
 	}
 
@@ -49,7 +49,7 @@ export class S2UserAuthenticationEndpoint extends S2UserEndpoint {
 	 */
 	public static getEndpointURL(append: string = ""): string {
 		
-		return super.getEndpointURL("/auth");
+		return super.getEndpointURL("/auth") + append;
 		
 	}
 
@@ -72,7 +72,7 @@ export class S2UserSignUpEndpoint extends S2UserAuthenticationEndpoint {
 	 */
 	public static getEndpointURL(append: string = ""): string {
 		
-		return super.getEndpointURL("/sign-up");
+		return super.getEndpointURL("/sign-up") + append;
 		
 	}
 	
@@ -136,7 +136,7 @@ export class S2UserSignInEndpoint extends S2UserAuthenticationEndpoint {
 	 */
 	public static getEndpointURL(append: string = ""): string {
 		
-		return super.getEndpointURL("/sign-in");
+		return super.getEndpointURL("/sign-in") + append;
 		
 	}
 	
