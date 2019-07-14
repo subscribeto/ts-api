@@ -1,2 +1,20 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0});const s2_api_1=require("./s2-api");class S2APIResponse{constructor(e,s=!1){this.isVerified=!1,this.rawXHR=e,s||this.verify()}verify(){return!!this.isVerified||(this.isVerified=!0,!0)}getBody(){if(!this.isVerified&&!this.verify())throw new Error("ERR | The response body did not conform to the expected type.");return s2_api_1.S2API.isJSON(this.rawXHR.response)?JSON.parse(this.rawXHR.response):this.rawXHR.response}getStatusCode(){return this.rawXHR.status}getRawXHR(){return this.rawXHR}}exports.S2APIResponse=S2APIResponse;
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const s2_api_1 = require("./s2-api");
+class S2APIResponse {
+    constructor(response, statusCode) {
+        this.response = response;
+        this.statusCode = statusCode;
+    }
+    getBody() {
+        if (s2_api_1.S2API.isJSON(this.response))
+            return JSON.parse(this.response);
+        else
+            return this.response;
+    }
+    getStatusCode() {
+        return this.statusCode;
+    }
+}
+exports.S2APIResponse = S2APIResponse;
 //# sourceMappingURL=s2-api-response.js.map

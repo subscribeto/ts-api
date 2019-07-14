@@ -1,9 +1,7 @@
 export declare class S2APIResponse<R> {
-    private readonly rawXHR;
-    private isVerified;
-    constructor(response: XMLHttpRequest, lazyInitialization?: boolean);
-    verify(): boolean;
+    private readonly response;
+    private readonly statusCode;
+    constructor(response: R, statusCode: number);
     getBody(): R;
     getStatusCode(): number;
-    getRawXHR(): XMLHttpRequest;
 }

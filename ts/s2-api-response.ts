@@ -15,56 +15,27 @@ import { S2API } from "./s2-api";
  */
 export class S2APIResponse<R> {
 	
-	private readonly rawXHR: XMLHttpRequest;
+	private readonly response: R;
 	
-	private isVerified: boolean = false;
+	private readonly statusCode: number;
 	
-	public constructor(response: XMLHttpRequest, lazyInitialization: boolean = false) {
+	public constructor(response: R, statusCode: number) {
 	
-		this.rawXHR = response;
-		
-		if (!lazyInitialization) this.verify();
+		this.response = response;
+		this.statusCode = statusCode;
 	
-	}
-	
-	public verify(): boolean {
-		
-		if (this.isVerified) return true;
-		
-		// TODO [7/11/19 @ 4:32 PM] - Finish the 'verify' method.
-		
-		this.isVerified = true;
-		
-		return true;
-		
 	}
 	
 	public getBody(): R {
 		
-		if (!this.isVerified) {
-			
-			if (!this.verify()) {
-				
-				throw new Error("ERR | The response body did not conform to the expected type.");
-				
-			}
-			
-		}
-		
-		if (S2API.isJSON(this.rawXHR.response)) return JSON.parse(this.rawXHR.response) as unknown as R;
-		else return this.rawXHR.response as unknown as R;
+		if (S2API.isJSON(this.response)) return JSON.parse(this.response as any) as unknown as R;
+		else return this.response as unknown as R;
 		
 	}
 	
 	public getStatusCode(): number {
 		
-		return this.rawXHR.status;
-		
-	}
-	
-	public getRawXHR(): XMLHttpRequest {
-		
-		return this.rawXHR;
+		return this.statusCode;
 		
 	}
 	

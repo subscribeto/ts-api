@@ -1,12 +1,15 @@
 {
 	"name": "@subscribeto/ts-api",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "A collection of utility classes for accessing the sub.scribe.to API.",
+	"publishConfig": {
+		"access": "public"
+	},
 	"main": "js/main",
 	"types": ".d.ts/main",
 	"scripts": {
-		"build": "../ts-api2/node_modules/.bin/gulp && jest",
-		"test": "../ts-api2/node_modules/.bin/jest"
+		"build": "gulp && jest",
+		"test": "jest"
 	},
 	"repository": {
 		"type": "git",
